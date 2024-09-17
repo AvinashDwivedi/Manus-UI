@@ -7,7 +7,7 @@ document.getElementById('sendButton').addEventListener('click', async () => {
     document.getElementById('query').value = '';
 
     try {
-        const response = await fetch('https://manus-v1-032332ceac16.herokuapp.com/analyze', {
+        const response = await fetch(' https://manus-server-b4013d63b07b.herokuapp.com/analyze', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
