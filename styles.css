@@ -1,5 +1,5 @@
 /* Reset some default styles */
-body, h1, textarea, button {
+body, h1, h2, p, textarea, button {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -7,37 +7,57 @@ body, h1, textarea, button {
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #e5ddd5;
-    color: #333;
+    background-color: #121212;  /* Dark background for the whole page */
+    color: #e0e0e0;  /* Light text color for better contrast */
+    height: 100vh;
+    overflow: hidden;  /* Prevent scrolling */
 }
+
+.container {
+    display: flex;
+    height: 100vh;  /* Full screen height */
+    width: 100vw;   /* Full screen width */
+}
+
+.description-container {
+    width: 33%;
+    background-color: #494747;
+    color: #fbfbfb;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  /* Vertically centers the content */
+}
+
+.description-container h2, .description-container p {
+    margin: 0;  /* Remove default margins */
+    text-align: center;  /* Keep the original text alignment */
+}
+
 
 .chat-container {
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    max-width: 480px;
-    margin: 0 auto;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #fff;
+    height: 100vh;  /* Full screen height */
+    width: 67%;
+    background-color: #242424;  /* Dark background for chat container */
+    border: none;
+    color: #e0e0e0;  /* Light text color for messages */
 }
 
 .chat-header {
-    background-color: #075e54;
-    color: white;
+    background-color: #1c1c1c;  /* Dark header background */
+    color: #f77903;
     padding: 15px;
     text-align: center;
-    border-bottom: 1px solid #ddd;
-}
-
-.chat-header h1 {
-    margin: 0;
+    border-bottom: 1px solid #333;  /* Darker border */
 }
 
 .chat-main {
     flex: 1;
-    overflow-y: auto;
+    overflow-y: auto;  /* Allow scrolling for the chat content */
     padding: 10px;
+    position: relative;
 }
 
 .chat-box {
@@ -55,34 +75,38 @@ body {
 
 .message.user {
     align-self: flex-end;
-    background-color: #dcf8c6;
+    background-color: #333;  /* Darker bubble for user messages */
+    color: #fff;
 }
 
 .message.bot {
     align-self: flex-start;
-    background-color: #fff;
-    border: 1px solid #ddd;
+    background-color: #444;  /* Darker bubble for bot messages */
+    color: #fff;
+    border: 1px solid #555;
 }
 
 .chat-footer {
     display: flex;
     align-items: center;
     padding: 10px;
-    border-top: 1px solid #ddd;
-    background-color: #fff;
+    background-color: #1c1c1c;  /* Darker footer */
+    border-top: 1px solid #333;
 }
 
 textarea {
     flex: 1;
     padding: 10px;
-    border: 1px solid #ddd;
+    background-color: #333;  /* Dark background for textarea */
+    border: 1px solid #555;  /* Darker border */
+    color: #fff;  /* Light text color */
     border-radius: 4px;
     resize: none;
 }
 
 button {
     padding: 10px 20px;
-    background-color: #075e54;
+    background-color: #f77903;  /* Purple color for the button */
     color: white;
     border: none;
     border-radius: 4px;
@@ -91,5 +115,13 @@ button {
 }
 
 button:hover {
-    background-color: #004d40;
+    background-color: #f77903;  /* Darker purple on hover */
+}
+
+.typing-indicator {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-style: italic;
+    color: #bbb;  /* Lighter grey for typing indicator */
 }

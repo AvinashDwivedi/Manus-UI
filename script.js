@@ -6,8 +6,12 @@ document.getElementById('sendButton').addEventListener('click', async () => {
     addMessage(query, 'user');
     document.getElementById('query').value = '';
 
+    // Show typing indicator
+    const typingIndicator = document.getElementById('typingIndicator');
+    typingIndicator.style.display = 'block';
+
     try {
-        const response = await fetch(' https://manus-server-b4013d63b07b.herokuapp.com/analyze', {
+        const response = await fetch('http://127.0.0.1:8000/analyze', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -20,8 +24,12 @@ document.getElementById('sendButton').addEventListener('click', async () => {
         }
 
         const data = await response.json();
+        
+        // Hide typing indicator when response is received
+        typingIndicator.style.display = 'none';
         addMessage(data.result, 'bot');
     } catch (error) {
+        typingIndicator.style.display = 'none';
         addMessage(`Error: ${error.message}`, 'bot');
     }
 });
@@ -30,7 +38,7 @@ function addMessage(message, sender) {
     const chatBox = document.getElementById('chatBox');
     const messageElement = document.createElement('div');
     messageElement.classList.add('message', sender);
-    messageElement.innerHTML = message; // Use innerHTML to render HTML content
+    messageElement.innerHTML = message;
     chatBox.appendChild(messageElement);
-    chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom
+    chatBox.scrollTop = chatBox.scrollHeight;
 }
