@@ -5,14 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI-Data Scientist</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <div class="container">
         <div class="description-container">
-            <header class="description-header"></header>
-            </header>
             <h2>Welcome to AI-Data Scientist</h2>
             <p>This tool helps you analyze your data using AI-driven insights. Chat with our bot to get started.</p>
+            <div class="file-upload-container">
+                <label class="custom-file-input" for="fileInput" id="fileLabel">Choose file</label>
+                <input type="file" id="fileInput" accept=".xlsx, .csv">
+                <button id="uploadButton">Upload File</button>
+            </div>            
+            <div id="uploadMessage" style="margin-top: 10px;"></div>
         </div>
         <div class="chat-container">
             <header class="chat-header">
@@ -23,11 +28,10 @@
                 <div id="typingIndicator" class="typing-indicator" style="display: none;">Bot is typing...</div>
             </main>
             <footer class="chat-footer">
-                <textarea id="query" placeholder="Type your message..." rows="2"></textarea>
-                <button id="sendButton">Send</button>
+                <textarea id="query" placeholder="Type your message..." rows="2" aria-label="Type your message here"></textarea>
+                <button id="sendButton" aria-label="Send message">Send</button>
             </footer>
         </div>
     </div>
-    <script src="script.js"></script>
 </body>
 </html>
